@@ -1,0 +1,26 @@
+# Combine count matrices
+
+library("here")
+library("tools")
+library("AnnotationDbi")
+library("dplyr")
+
+combineCounts <- function(countdir, outputdir) {
+  filenames <- file_path_sans_ext(list.files(countdir, pattern="*.tsv", full.names=FALSE))
+  sample1 <- read_tsv(paste(countdir,'/', filenames[1], ".tsv", sep=""))
+  sample1 <- sample1 %>% 
+    mutate(target_id = map(strsplit(.$target_id, split = '\\|'), 1) %>% unlist())
+  
+  countmatrix <- data.frame(sample1$target_id)
+  colnames(countmatrix) <- "ExonIDs"
+  countmatrix[,filenames[1]] <- as.numeric(sample1$tpm)
+  
+  for (file in filenames[2:length(filenames)]){
+    sampledata <- read_tsv(paste(countdir,'/', file, ".tsv", sep=""))
+    countmatrix[,file] <- as.numeric(sampledata$tpm) #removes the automatic column added from read.csv and also duplicate counts
+  }
+  outputpath <- paste(outputdir, "combinedCM.tsv", sep="/")
+  write_tsv(countmatrix, outputpath)
+}
+
+combineCounts(countdir = "IsoformVisRNA/exon_quants", outputdir = "IsoformVisRNA")
