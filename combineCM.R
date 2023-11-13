@@ -13,11 +13,11 @@ combineCounts <- function(countdir, outputdir) {
   
   countmatrix <- data.frame(sample1$target_id)
   colnames(countmatrix) <- "ExonIDs"
-  countmatrix[,filenames[1]] <- as.numeric(sample1$tpm)
+  countmatrix[,filenames[1]] <- as.numeric(sample1$tpm) #tpm is the normalized count (transcript per million)
   
   for (file in filenames[2:length(filenames)]){
     sampledata <- read_tsv(paste(countdir,'/', file, ".tsv", sep=""))
-    countmatrix[,file] <- as.numeric(sampledata$tpm) #removes the automatic column added from read.csv and also duplicate counts
+    countmatrix[,file] <- as.numeric(sampledata$tpm) # add tpm for transcript id for each sample.
   }
   outputpath <- paste(outputdir, "combinedCM.tsv", sep="/")
   write_tsv(countmatrix, outputpath)
