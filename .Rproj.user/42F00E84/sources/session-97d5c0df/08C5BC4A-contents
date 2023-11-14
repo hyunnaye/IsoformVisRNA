@@ -1,0 +1,21 @@
+# # Combine count matrices
+#
+# combineCounts <- function(countdir, outputdir) {
+#   filenames <- file_path_sans_ext(list.files(countdir, pattern="*.tsv", full.names=FALSE))
+#   sample1 <- read_tsv(paste(countdir,'/', filenames[1], ".tsv", sep=""))
+#   sample1 <- sample1 %>%
+#     mutate(target_id = map(strsplit(.$target_id, split = '\\|'), 1) %>% unlist())
+#
+#   countmatrix <- data.frame(sample1$target_id)
+#   colnames(countmatrix) <- "TranscriptIDs"
+#   countmatrix[,filenames[1]] <- as.numeric(sample1$tpm) #tpm is the normalized count (transcript per million)
+#
+#   for (file in filenames[2:length(filenames)]){
+#     sampledata <- read_tsv(paste(countdir,'/', file, ".tsv", sep=""))
+#     countmatrix[,file] <- as.numeric(sampledata$tpm) # add tpm for transcript id for each sample.
+#   }
+#   outputpath <- paste(outputdir, "combinedCM.tsv", sep="/")
+#   write_tsv(countmatrix, outputpath)
+# }
+#
+# combineCounts(countdir = "IsoformVisRNA/transcript_quants", outputdir = "IsoformVisRNA")
