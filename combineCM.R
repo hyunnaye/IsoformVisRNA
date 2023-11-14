@@ -12,7 +12,7 @@ combineCounts <- function(countdir, outputdir) {
     mutate(target_id = map(strsplit(.$target_id, split = '\\|'), 1) %>% unlist())
   
   countmatrix <- data.frame(sample1$target_id)
-  colnames(countmatrix) <- "ExonIDs"
+  colnames(countmatrix) <- "TranscriptIDs"
   countmatrix[,filenames[1]] <- as.numeric(sample1$tpm) #tpm is the normalized count (transcript per million)
   
   for (file in filenames[2:length(filenames)]){
@@ -23,4 +23,4 @@ combineCounts <- function(countdir, outputdir) {
   write_tsv(countmatrix, outputpath)
 }
 
-combineCounts(countdir = "IsoformVisRNA/exon_quants", outputdir = "IsoformVisRNA")
+combineCounts(countdir = "IsoformVisRNA/transcript_quants", outputdir = "IsoformVisRNA")

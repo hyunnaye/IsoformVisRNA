@@ -9,7 +9,7 @@ library(dplyr)
 library(tidyverse)
 
 #This file was downloaded from the ENCODE project https://www.encodeproject.org/report/?type=Experiment&status=released&internal_tags=RushAD&assay_title=total+RNA-seq&limit=200
-experiment_report <- read_tsv('IsoformVisRNA/exon_quants/experiment_report.tsv')
+experiment_report <- read_tsv('IsoformVisRNA/experiment_report.tsv')
 
 #the downloaded tsv file has spaces in the column names. Thus the spaces will be replaced with underscores.
 names(experiment_report) <- str_replace_all(names(experiment_report), c(" " = "_"))
@@ -24,7 +24,7 @@ experiment_report <- experiment_report %>%
 
 # Getting a list of all the transcript quantifications file names for testing. These files were downloaded from the ENCODE project where they were quantified at the transcription level using kallisto.
 # https://www.encodeproject.org/report/?type=Experiment&status=released&internal_tags=RushAD&assay_title=total+RNA-seq&limit=200
-quantsList <- list.files(path = "IsoformVisRNA/exon_quants", pattern = "\\.tsv$")
+quantsList <- list.files(path = "IsoformVisRNA/transcript_quants", pattern = "\\.tsv$")
 quantsList <- str_replace_all(quantsList, c(".tsv" = ""))
 
 quantFileInfo <- data.frame(row.names = c('Accession', 'Biosample_age', 'Biosample_summary', 'Quantification_file'))
@@ -37,6 +37,6 @@ for (file in quantsList) {
   quantFileInfo <-rbind(quantFileInfo, matchingInfo)
 }
 
-write_csv(quantFileInfo, file = 'IsoformVisRNA/cleaned_metadata.csv')
+write_tsv(quantFileInfo, file = 'IsoformVisRNA/cleaned_metadata.tsv')
 
 
