@@ -1,26 +1,26 @@
 {
-    "id": "E73DF6FE",
-    "path": "~/Documents/BCB410/IsoformVisRNA/IsoformVisRNA/README.md",
-    "project_path": "README.md",
-    "type": "markdown",
+    "id": "C1188AAA",
+    "path": "~/Documents/BCB410/IsoformVisRNA/IsoformVisRNA/README.Rmd",
+    "project_path": "README.Rmd",
+    "type": "r_markdown",
     "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1699954126447.0,
+    "created": 1699955412323.0,
     "source_on_save": false,
     "relative_order": 8,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "0,0",
-        "scrollLine": "0"
+        "cursorPosition": "108,9",
+        "scrollLine": "89"
     },
     "folds": "",
-    "lastKnownWriteTime": 1699954977,
+    "lastKnownWriteTime": 1699955185,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1699954977,
+    "last_content_update": 1699955185,
     "read_only": false,
     "read_only_alternatives": []
 }
