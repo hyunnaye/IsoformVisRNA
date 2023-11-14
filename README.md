@@ -116,9 +116,11 @@ The package tree structure is provided below.
       |- boxplot.png
   |- man
     |- calculateRatios.Rd
+    |- combineCounts.Rd
     |- Experiment_info.Rd
     |- generateBarPlot.Rd
     |- generateBoxPlot.Rd
+    |- Normalized_CM.Rd
   |- R
     |- combineCM.R
     |- compare_expression.R
@@ -126,4 +128,6 @@ The package tree structure is provided below.
     |- testthat.R
     |- testthat
       |- test-calculateRatios.R
+  |- vignettes
+    |- Introduction_IsoformVisRNA.Rmd
 ```
