@@ -67,8 +67,7 @@ to multiple lines in order to avoid overflowing labels.
 ## References
 
 ENCODE Project Consortium.. An integrated encyclopedia of DNA elements
-in the human genome. Nature 2012 Sep  
-6;489(7414):57-74. PMID: 22955616
+in the human genome. Nature 2012 Sep 6;489(7414):57-74. PMID: 22955616
 
 H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag
 New York, 2016.
