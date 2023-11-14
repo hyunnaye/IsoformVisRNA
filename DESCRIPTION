@@ -12,14 +12,9 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    AnnotationDbi,
-    BiocManager,
     dplyr,
-    edgeR,
     ggplot2,
     ggpubr,
-    Gviz,
-    here,
     stringr,
     tools
 Roxygen: list(markdown = TRUE)
