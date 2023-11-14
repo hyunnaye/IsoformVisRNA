@@ -3,7 +3,7 @@
     "path": "~/Documents/BCB410/IsoformVisRNA/IsoformVisRNA/README.Rmd",
     "project_path": "README.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "306198880",
     "contents": "",
     "dirty": false,
     "created": 1699951701557.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "54,42",
-        "scrollLine": "52"
+        "cursorPosition": "46,12",
+        "scrollLine": "38"
     },
     "folds": "",
-    "lastKnownWriteTime": 1699954036,
+    "lastKnownWriteTime": 1699954958,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1699954036936,
+    "last_content_update": 1699954958261,
     "read_only": false,
     "read_only_alternatives": []
 }
