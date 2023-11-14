@@ -38,11 +38,12 @@ To run the Shiny app: Under construction
     data(package = "IsoformVisRNA") 
     browseVignettes("IsoformVisRNA")
 
-`IsoformVisRNA` contains 3 functions to analyze the alternative splicing
-for the desired gene in samples. The *calculateRatios* function
-calculates the expression ratios for the two given transcript ids. The
-*generateBarPlot* generates a bar plot of the expression ratio for each
-sample name ordered by samplename and given metadata group.
+`IsoformVisRNA` contains 4 functions to analyze the alternative splicing
+for the desired gene in samples. The *combineCM* function combines all
+kallisto count matrices to a single data frame. The *calculateRatios*
+function calculates the expression ratios for the two given transcript
+ids. The *generateBarPlot* generates a bar plot of the expression ratio
+for each sample name ordered by samplename and given metadata group.
 *generateBoxPlot* generates a box plot of the expression ratio for each
 metadata group. An example output for the bar and box plot is shown
 below.
@@ -53,14 +54,15 @@ below.
 
 ## Contributions
 
-The author of the package is Nayeon Hyun. The *calculateRatios* function
-makes use of the `dplyr` R package to filter and retrieve the counts for
-the desired transcript ids. The *generateBarPlot* function makes use of
-the `ggplot2` R package to generate its bar plot. The *generateBarPlot*
-function makes use of the `ggboxplot` function in the `ggpubr` R package
-to generate its box plot. This function also uses the `stringr` package
-to wrap the labels to multiple lines in order to avoid overflowing
-labels.
+The author of the package is Nayeon Hyun. The *combineCM* function uses
+the tools package to remove extensions from filenames to generate the
+column names. The *calculateRatios* function makes use of the `dplyr` R
+package to filter and retrieve the counts for the desired transcript
+ids. The *generateBarPlot* function makes use of the `ggplot2` R package
+to generate its bar plot. The *generateBarPlot* function makes use of
+the `ggboxplot` function in the `ggpubr` R package to generate its box
+plot. This function also uses the `stringr` package to wrap the labels
+to multiple lines in order to avoid overflowing labels.
 
 ## References
 
@@ -73,6 +75,10 @@ New York, 2016.
 
 Kassambara A (2023). *ggpubr: ‘ggplot2’ Based Publication Ready Plots*.
 R package version 0.6.0, <https://CRAN.R-project.org/package=ggpubr>.
+
+R Core Team (2023). *R: A Language and Environment for Statistical
+Computing*. R Foundation for Statistical Computing, Vienna, Austria.
+<https://www.R-project.org/>.
 
 Wickham H (2022). *stringr: Simple, Consistent Wrappers for Common
 String Operations*. R package version 1.5.0,
@@ -115,6 +121,7 @@ The package tree structure is provided below.
     |- generateBarPlot.Rd
     |- generateBoxPlot.Rd
   |- R
+    |- combineCM.R
     |- compare_expression.R
   |- tests
     |- testthat.R
