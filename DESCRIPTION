@@ -9,6 +9,7 @@ Description: Generate bar and box plots to compare expression ratios at the tran
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+biocViews:
 Imports: 
     AnnotationDbi,
     dplyr,
