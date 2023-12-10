@@ -11,7 +11,15 @@ ui <- fluidPage(
 
       br(),
 
-      tags$p("Upload CSV files that you created with calculateRatios(). It should be in the output_path you declared when running the function."),
+      tags$p("Upload a CSV file that you created with calculateRatios(). It should be in the output_path you declared when running the function. Please refer
+      to the example dataset below."),
+
+      br(),
+
+      # Input files
+      tags$a(href = paste("https://github.com/hyunnaye/IsoformVisRNA/blob/master",
+                          "/inst/extdata/ratioDF.csv", sep = ''),
+             "Example Dataset 1"),
 
       fileInput("ratioDF",
                 "Choose CSV File for expression ratio analysis data",
