@@ -19,7 +19,7 @@
 #' @importFrom shiny runApp
 
 runIsoformVisRNA <- function() {
-  appDir <- system.file("./inst/shiny-scripts/app.R",
+  appDir <- system.file("shiny-scripts",
                         package = "IsoformVisRNA")
   shiny::runApp(appDir, display.mode = "normal")
   return()
