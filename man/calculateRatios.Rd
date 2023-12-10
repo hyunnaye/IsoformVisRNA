@@ -10,7 +10,7 @@ calculateRatios(
   transcript_id1,
   transcript_id2,
   metadata_group,
-  output_path
+  output_path = NULL
 )
 }
 \arguments{
@@ -25,7 +25,7 @@ sample names are the columns and transcript ids are the rows. See data/Normalize
 
 \item{metadata_group}{the column name in metadata used to categorize samples into desired groups.}
 
-\item{output_path}{desired path to save the output in a csv.}
+\item{output_path}{If desired, path to save the output in a csv. Default is NULL. The matrix will only save to a path if this argument is not NULL.}
 }
 \value{
 Returns a matrix that includes the expression ratio of given transcript ids for each sample.
@@ -33,6 +33,7 @@ Returns a matrix that includes the expression ratio of given transcript ids for 
 \description{
 A function that returns a matrix that includes the expression ratio of given transcript ids for each sample in a given data.
 The ratio computed is calculated as transcript_id2: transcript_id1 where the normalized count of transcript_id2 is divided by the count of transcript_id2 for each sample.
+Note: to run the shiny app, output_path must be set in this function to save this output to a csv file.
 }
 \examples{
 ratioDF <- calculateRatios(Normalized_CM, Experiment_info, "ENST00000316724.9", "ENST00000409400.1", "Biosample_summary")

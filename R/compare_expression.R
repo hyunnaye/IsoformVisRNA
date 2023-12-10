@@ -2,6 +2,7 @@
 #'
 #' A function that returns a matrix that includes the expression ratio of given transcript ids for each sample in a given data.
 #' The ratio computed is calculated as transcript_id2: transcript_id1 where the normalized count of transcript_id2 is divided by the count of transcript_id2 for each sample.
+#' Note: to run the shiny app, output_path must be set in this function to save this output to a csv file.
 #'
 #' @param normCM matrix that includes all normalized count matrices where
 #'    sample names are the columns and transcript ids are the rows. See data/Normalized_CM.rda for an example.
@@ -14,7 +15,7 @@
 #'
 #' @param metadata_group the column name in metadata used to categorize samples into desired groups.
 #'
-#' @param output_path desired path to save the output in a csv.
+#' @param output_path If desired, path to save the output in a csv. Default is NULL. The matrix will only save to a path if this argument is not NULL.
 #'
 #' @return Returns a matrix that includes the expression ratio of given transcript ids for each sample.
 #'
@@ -26,7 +27,7 @@
 #'   package version 1.1.3, <https://CRAN.R-project.org/package=dplyr>.
 #' @export
 #' @import dplyr
-calculateRatios <- function(normCM, metadata, transcript_id1, transcript_id2, metadata_group, output_path) {
+calculateRatios <- function(normCM, metadata, transcript_id1, transcript_id2, metadata_group, output_path = NULL) {
   samplenames <- colnames(normCM)[-1]
   desiredTranscripts <- normCM %>% filter(TranscriptIDs %in% c(transcript_id1, transcript_id2))
   ratioDF <- data.frame(samplenames)
@@ -38,8 +39,9 @@ calculateRatios <- function(normCM, metadata, transcript_id1, transcript_id2, me
   ratioDF$Ratio <- ratioList
   ratioDF[, metadata_group] <- metadata[, metadata_group]
 
-  write.csv(ratioDF, output_path)
-
+  if (!is.null(output_path)) {
+    write.csv(ratioDF, output_path)
+  }
   return(ratioDF)
 }
 
@@ -51,11 +53,11 @@ calculateRatios <- function(normCM, metadata, transcript_id1, transcript_id2, me
 #'
 #' @param data matrix generated from calculateRatios.
 #'
-#' @param x_label A character vector specifying the desired label for the x-axis.
+#' @param x_label A character vector specifying the desired label for the x-axis. Default is NULL.
 #'
-#' @param y_label A character vector specifying the desired label for the y-axis.
+#' @param y_label A character vector specifying the desired label for the y-axis. Default is NULL.
 #'
-#' @param title A character vector specifying the desired title for the plot.
+#' @param title A character vector specifying the desired title for the plot. Default is NULL.
 #'
 #' @return Returns the bar plot.
 #'
@@ -70,7 +72,7 @@ calculateRatios <- function(normCM, metadata, transcript_id1, transcript_id2, me
 #' @export
 #' @import ggplot2
 #'
-generateBarPlot <- function(data, x_label, y_label, title) {
+generateBarPlot <- function(data, x_label = NULL, y_label = NULL, title = NULL) {
   barPlot<-ggplot(data=data, aes_string(x=paste("fct_reorder(reorder(",colnames(data)[1], ",", colnames(data)[2], "),", colnames(data)[3],")"), y = colnames(data)[2], fill=colnames(data)[3])) +
     geom_bar(stat = "identity", width=0.5)+
     labs(title = title) +
@@ -88,11 +90,11 @@ generateBarPlot <- function(data, x_label, y_label, title) {
 #'
 #' @param data matrix generated from calculateRatios.
 #'
-#' @param x_label A character vector specifying the desired label for the x-axis.
+#' @param x_label A character vector specifying the desired label for the x-axis. Default is NULL.
 #'
-#' @param y_label A character vector specifying the desired label for the y-axis.
+#' @param y_label A character vector specifying the desired label for the y-axis. Default is NULL.
 #'
-#' @param title A character vector specifying the desired title for the plot.
+#' @param title A character vector specifying the desired title for the plot. Default is NULL.
 #'
 #' @param order desired ordered list of metadata_group names to sort the boxes in the plot. Default is NULL.
 #'
@@ -117,7 +119,7 @@ generateBarPlot <- function(data, x_label, y_label, title) {
 #' @export
 #' @import ggpubr
 #' @import stringr
-generateBoxPlot <- function(data, x_label, y_label, title, order = NULL) {
+generateBoxPlot <- function(data, x_label = NULL, y_label = NULL, title = NULL, order = NULL) {
   boxPlot <- ggboxplot(data=data, x = colnames(data)[3], y = colnames(data)[2],
                        fill = colnames(data)[3], order = order)+
     grids()+
@@ -129,6 +131,7 @@ generateBoxPlot <- function(data, x_label, y_label, title, order = NULL) {
     ylab(y_label)
 
   print(boxPlot)
+  return(boxPlot)
 }
 
 #[END]

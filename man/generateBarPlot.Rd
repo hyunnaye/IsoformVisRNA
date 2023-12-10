@@ -4,16 +4,16 @@
 \alias{generateBarPlot}
 \title{Generate a bar plot for the expression ratio created from calculateRatios.}
 \usage{
-generateBarPlot(data, x_label, y_label, title)
+generateBarPlot(data, x_label = NULL, y_label = NULL, title = NULL)
 }
 \arguments{
 \item{data}{matrix generated from calculateRatios.}
 
-\item{x_label}{A character vector specifying the desired label for the x-axis.}
+\item{x_label}{A character vector specifying the desired label for the x-axis. Default is NULL.}
 
-\item{y_label}{A character vector specifying the desired label for the y-axis.}
+\item{y_label}{A character vector specifying the desired label for the y-axis. Default is NULL.}
 
-\item{title}{A character vector specifying the desired title for the plot.}
+\item{title}{A character vector specifying the desired title for the plot. Default is NULL.}
 }
 \value{
 Returns the bar plot.
