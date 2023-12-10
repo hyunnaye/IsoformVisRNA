@@ -30,7 +30,11 @@ devtools::install_github("hyunnaye/IsoformVisRNA", build_vignettes = TRUE)
 library("IsoformVisRNA")
 ```
 
-To run the Shiny app: Under construction
+To run the Shiny app:
+
+``` r
+IsoformVisRNA::runIsoformVisRNA()
+```
 
 ## Overview
 
@@ -109,6 +113,7 @@ The package tree structure is provided below.
       |- barplot.png
       |- boxplot.png
       |- flowchart.png
+      |- ratioDF.csv
     |- shiny-scripts
       |- app.R
   |- man
@@ -118,6 +123,7 @@ The package tree structure is provided below.
     |- generateBarPlot.Rd
     |- generateBoxPlot.Rd
     |- Normalized_CM.Rd
+    |- runIsoformVisRNA.Rd
   |- R
     |- combineCM.R
     |- compare_expression.R
@@ -126,6 +132,8 @@ The package tree structure is provided below.
     |- testthat.R
     |- testthat
       |- test-calculateRatios.R
+      |- test-generateBarPlot.R
+      |- test-generateBoxPlot.R
   |- vignettes
     |- Introduction_IsoformVisRNA.Rmd
 ```
