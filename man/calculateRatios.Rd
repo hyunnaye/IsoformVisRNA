@@ -9,7 +9,8 @@ calculateRatios(
   metadata,
   transcript_id1,
   transcript_id2,
-  metadata_group
+  metadata_group,
+  output_path
 )
 }
 \arguments{
@@ -23,6 +24,8 @@ sample names are the columns and transcript ids are the rows. See data/Normalize
 \item{transcript_id2}{the id of the second transcript ID for comparing expression.}
 
 \item{metadata_group}{the column name in metadata used to categorize samples into desired groups.}
+
+\item{output_path}{desired path to save the output in a csv.}
 }
 \value{
 Returns a matrix that includes the expression ratio of given transcript ids for each sample.

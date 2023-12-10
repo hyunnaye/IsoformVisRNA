@@ -42,15 +42,9 @@ To run the Shiny app: Under construction
 for the desired gene in samples. The *combineCM* function combines all
 kallisto count matrices to a single data frame. The *calculateRatios*
 function calculates the expression ratios for the two given transcript
-ids. The *generateBarPlot* generates a bar plot of the expression ratio
-for each sample name ordered by samplename and given metadata group.
-*generateBoxPlot* generates a box plot of the expression ratio for each
-metadata group. An example output for the bar and box plot is shown
-below.
+ids. Below is a flowchart demonstate the workflow of this package.
 
-![](./inst/extdata/barplot.png)
-
-![](./inst/extdata/boxplot.png)
+![](./inst/extdata/flowchart.png)
 
 ## Contributions
 

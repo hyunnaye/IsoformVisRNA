@@ -15,6 +15,7 @@ Imports:
     dplyr,
     ggplot2,
     ggpubr,
+    shiny,
     stringr,
     tools
 Roxygen: list(markdown = TRUE)

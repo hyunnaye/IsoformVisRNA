@@ -13,6 +13,8 @@
 #'
 #' @param metadata_group the column name in metadata used to categorize samples into desired groups.
 #'
+#' @param output_path desired path to save the output in a csv.
+#'
 #' @return Returns a matrix that includes the expression ratio of given transcript ids for each sample.
 #'
 #' @examples
@@ -23,7 +25,7 @@
 #'   package version 1.1.3, <https://CRAN.R-project.org/package=dplyr>.
 #' @export
 #' @import dplyr
-calculateRatios <- function(normCM, metadata, transcript_id1, transcript_id2, metadata_group) {
+calculateRatios <- function(normCM, metadata, transcript_id1, transcript_id2, metadata_group, output_path) {
   samplenames <- colnames(normCM)[-1]
   desiredTranscripts <- normCM %>% filter(TranscriptIDs %in% c(transcript_id1, transcript_id2))
   ratioDF <- data.frame(samplenames)
@@ -34,6 +36,9 @@ calculateRatios <- function(normCM, metadata, transcript_id1, transcript_id2, me
   }
   ratioDF$Ratio <- ratioList
   ratioDF[, metadata_group] <- metadata[, metadata_group]
+
+  write.csv(ratioDF, output_path)
+
   return(ratioDF)
 }
 
@@ -65,7 +70,7 @@ calculateRatios <- function(normCM, metadata, transcript_id1, transcript_id2, me
 #' @import ggplot2
 #'
 generateBarPlot <- function(data, x_label, y_label, title) {
-  barPlot<-ggplot(data=ratioDF, aes_string(x=paste("fct_reorder(reorder(",colnames(data)[1], ",", colnames(data)[2], "),", colnames(data)[3],")"), y = colnames(data)[2], fill=colnames(data)[3])) +
+  barPlot<-ggplot(data=data, aes_string(x=paste("fct_reorder(reorder(",colnames(data)[1], ",", colnames(data)[2], "),", colnames(data)[3],")"), y = colnames(data)[2], fill=colnames(data)[3])) +
     geom_bar(stat = "identity", width=0.5)+
     labs(title = title) +
     theme(text = element_text(size=10), axis.text.x = element_text(angle = 90,hjust=0.95,vjust=0.5, size=8), plot.title = element_text(size=16, hjust=0.5))+
@@ -112,7 +117,7 @@ generateBarPlot <- function(data, x_label, y_label, title) {
 #' @import ggpubr
 #' @import stringr
 generateBoxPlot <- function(data, x_label, y_label, title, order = NULL) {
-  boxPlot <- ggboxplot(ratioDF, x = colnames(data)[3], y = colnames(data)[2],
+  boxPlot <- ggboxplot(data=data, x = colnames(data)[3], y = colnames(data)[2],
                        fill = colnames(data)[3], order = order)+
     grids()+
     xlab(x_label) +
