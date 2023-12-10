@@ -108,6 +108,9 @@ The package tree structure is provided below.
     |- extdata
       |- barplot.png
       |- boxplot.png
+      |- flowchart.png
+    |- shiny-scripts
+      |- app.R
   |- man
     |- calculateRatios.Rd
     |- combineCounts.Rd
@@ -118,6 +121,7 @@ The package tree structure is provided below.
   |- R
     |- combineCM.R
     |- compare_expression.R
+    |- runIsoformVisRNA.R
   |- tests
     |- testthat.R
     |- testthat
