@@ -37,6 +37,7 @@ Note: to run the shiny app, output_path must be set in this function to save thi
 }
 \examples{
 ratioDF <- calculateRatios(Normalized_CM, Experiment_info, "ENST00000316724.9", "ENST00000409400.1", "Biosample_summary")
+ratioDF <- calculateRatios(Normalized_CM, Experiment_info, "ENST00000316724.9", "ENST00000409400.1", "Biosample_summary", "./ratioDF.csv")
 
 }
 \references{

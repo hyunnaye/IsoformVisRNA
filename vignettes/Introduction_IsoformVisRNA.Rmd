@@ -55,11 +55,9 @@ data(package = "IsoformVisRNA")
 
 ### Minimal requirements
 
-* You will need to generate transcript-level count matrices in tsv format using kallisto.
+* You will need to generate transcript-level count matrices in tsv format using kallisto. Then, you will need to have all the kallisto tsv files in a single folder. You will also need a metadata file containing details for your dataset.
 
-### Other
-
-## Applications
+## Functions
 
 *combineCounts* combines all kallisto count matrices to a single data frame.
 To get more information about *combineCounts* function, the help documentation will helpful:
@@ -85,6 +83,75 @@ library(IsoformVisRNA)
 library(IsoformVisRNA)
 ?IsoformVisRNA::generateBoxPlot
 ``` 
+
+### Workflow
+In the following session, I will demonstate the use of **IsoformVisRNA** by to compare the two ENSEMBL transcript IDs, ENST00000316724.9 and ENST00000409400.1.
+
+### Step 1: Combining all Kallisto matrices into one using combineCounts.
+After fulfilling the minimal requirements of this package and generating kallisto counts, the first step will be to combine all the matrices into a single count matrix. 
+This is done using the combineCounts function. There is only one argument for this function which is the path to the directory that contains the kallisto tsv outputs.
+
+
+``` r
+# combine all kallisto counts into a matrix called normCM
+combinedCM <- combineCounts("<path to the directory containing your kallisto outputs>")
+
+```
+
+### Step 2: Calculate ratios to compare expression of two transcript IDs with calculateRatios().
+Now, we can calculate ratios for isoform expression analysis using the function, calculateRatios(). This function generates expression ratios for 2 given transcript ids for all samples.
+
+This function takes 5 arguments plus an optional argument if you want to save the output to a csv.
+
+The first argument is normCM, which takes the matrix you generated in step 1.
+The second argument is metadata, which is the matrix that has your metadata information. If your metadata is in a tsv or csv, you will need to read it using read.csv() or read.tsv().
+The 3rd and 4th arguments are your two desired transcript ids for comparison. 
+The computed ratios will be transcript_id2 : transcript_id1.
+The fifth argument is metadata_group, which is the column in the metadata matrix, that you want to group your samples by.
+Lastly, the final argument is optional, which is the output_path. If you want to save the computed ratio data into a csv file, you can add a path to this argument. Note, to use our shiny app, this argument is required.
+
+``` r
+# calculate expression ratios for ENST00000316724.9 and ENST00000409400.1 without saving to a CSV.
+ratioDF <- calculateRatios(Normalized_CM, Experiment_info, "ENST00000316724.9", "ENST00000409400.1", "Biosample_summary")
+
+# calculate expression ratios for ENST00000316724.9 and ENST00000409400.1 and save to a CSV to use with the shiny app.
+ratioDF <- calculateRatios(Normalized_CM, Experiment_info, "ENST00000316724.9", "ENST00000409400.1", "Biosample_summary", "./ratioDF.csv")
+
+```
+### Step 3: Generate bar plots and box plots
+
+Now we are ready to generate our plots!
+
+To create a bar plot, generateBarPlot() can be used.
+It takes 1 required argument and 3 optional arguments.
+The first argument is data, which takes the matrix you generated in step 2.
+The 2nd and 3rd arguments are x-label and y-label, which are the names you want your x-axis and y-axis to be. This is optional and will be blank if not set.
+The last argument is the title for your plot. This is also optional and will be NULL and blank if not set. 
+
+``` r
+# generate bar plot
+generateBarPlot(ratioDF, "Sample names", "Ratio", "Bar plot")
+
+```
+
+To create a box plot, generateBoxPlot() can be used. This function will combine samples in the same metadata_group from the output of step 2 and create boxes for each group. 
+It has 1 required argument and 4 optional arguments.
+The first argument is data, which takes the matrix you generated in step 2.
+The 2nd and 3rd arguments are x-label and y-label, which are the names you want your x-axis and y-axis to be. This is optional and will be blank if not set.
+The 4th argument is the title for your plot. This is also optional and will be NULL and blank if not set. 
+The last argument takes a list to specify the desired order for the boxes of your plot. This is optional, and will be ordered automatically if not set. If you want the boxes to be in a specific order, all group names must be included in the list.
+
+``` r
+# generate box plot without custom ordering
+generateBoxPlot(ratioDF, "Disease Type", "Ratio", "Box plot")
+
+# generate box plot with specific ordering
+generateBoxPlot(ratioDF, "Disease Type", "Ratio", "Box plot",
+     c("Control", "mild cognitive impairment", "Cognitive impairment",
+     "Alzheimer's disease, Cognitive impairment", "Alzheimer's disease"))
+
+```
+
 
 ## Package References
 
