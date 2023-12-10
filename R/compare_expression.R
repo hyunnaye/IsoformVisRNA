@@ -1,6 +1,7 @@
 #' Generate expression ratios for 2 given transcript ids for all samples.
 #'
 #' A function that returns a matrix that includes the expression ratio of given transcript ids for each sample in a given data.
+#' The ratio computed is calculated as transcript_id2: transcript_id1 where the normalized count of transcript_id2 is divided by the count of transcript_id2 for each sample.
 #'
 #' @param normCM matrix that includes all normalized count matrices where
 #'    sample names are the columns and transcript ids are the rows. See data/Normalized_CM.rda for an example.
@@ -50,11 +51,11 @@ calculateRatios <- function(normCM, metadata, transcript_id1, transcript_id2, me
 #'
 #' @param data matrix generated from calculateRatios.
 #'
-#' @param x_label desired label for the x-axis.
+#' @param x_label A character vector specifying the desired label for the x-axis.
 #'
-#' @param y_label desired label for the y-axis.
+#' @param y_label A character vector specifying the desired label for the y-axis.
 #'
-#' @param title desired title for plot.
+#' @param title A character vector specifying the desired title for the plot.
 #'
 #' @return Returns the bar plot.
 #'
@@ -87,11 +88,11 @@ generateBarPlot <- function(data, x_label, y_label, title) {
 #'
 #' @param data matrix generated from calculateRatios.
 #'
-#' @param x_label desired label for the x-axis.
+#' @param x_label A character vector specifying the desired label for the x-axis.
 #'
-#' @param y_label desired label for the y-axis.
+#' @param y_label A character vector specifying the desired label for the y-axis.
 #'
-#' @param title desired title for plot.
+#' @param title A character vector specifying the desired title for the plot.
 #'
 #' @param order desired ordered list of metadata_group names to sort the boxes in the plot. Default is NULL.
 #'

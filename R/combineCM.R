@@ -3,7 +3,8 @@
 #' A function that returns a matrix that includes all normalized count matrices where
 #' sample names are the columns and transcript ids are the rows. See data/Normalized_CM.rda for an example.
 #'
-#' @param countdir path to the directory with all the count matrices.
+#' @param countdir path to the directory with all the count matrices. This is the directory where you stored your kallisto outputs.
+#' Note in order to use this package, kallisto is a required prerequisite step.
 #'
 #' @return Returns a matrix that combined every count matrices into one matrix.
 #'

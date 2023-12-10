@@ -32,6 +32,7 @@ Returns a matrix that includes the expression ratio of given transcript ids for 
 }
 \description{
 A function that returns a matrix that includes the expression ratio of given transcript ids for each sample in a given data.
+The ratio computed is calculated as transcript_id2: transcript_id1 where the normalized count of transcript_id2 is divided by the count of transcript_id2 for each sample.
 }
 \examples{
 ratioDF <- calculateRatios(Normalized_CM, Experiment_info, "ENST00000316724.9", "ENST00000409400.1", "Biosample_summary")

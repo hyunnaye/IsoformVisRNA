@@ -9,11 +9,11 @@ generateBarPlot(data, x_label, y_label, title)
 \arguments{
 \item{data}{matrix generated from calculateRatios.}
 
-\item{x_label}{desired label for the x-axis.}
+\item{x_label}{A character vector specifying the desired label for the x-axis.}
 
-\item{y_label}{desired label for the y-axis.}
+\item{y_label}{A character vector specifying the desired label for the y-axis.}
 
-\item{title}{desired title for plot.}
+\item{title}{A character vector specifying the desired title for the plot.}
 }
 \value{
 Returns the bar plot.

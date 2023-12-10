@@ -7,7 +7,8 @@
 combineCounts(countdir)
 }
 \arguments{
-\item{countdir}{path to the directory with all the count matrices.}
+\item{countdir}{path to the directory with all the count matrices. This is the directory where you stored your kallisto outputs.
+Note in order to use this package, kallisto is a required prerequisite step.}
 }
 \value{
 Returns a matrix that combined every count matrices into one matrix.
