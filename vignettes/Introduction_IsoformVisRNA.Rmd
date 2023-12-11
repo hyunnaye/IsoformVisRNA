@@ -84,6 +84,12 @@ library(IsoformVisRNA)
 ?IsoformVisRNA::generateBoxPlot
 ``` 
 
+You can also generate plots using the Shiny app. To launch the shiny app:
+```{r, }
+library(IsoformVisRNA)
+IsoformVisRNA::runIsoformVisRNA()
+``` 
+
 ### Workflow
 In the following session, I will demonstate the use of **IsoformVisRNA** by to compare the two ENSEMBL transcript IDs, ENST00000316724.9 and ENST00000409400.1.
 
@@ -92,7 +98,7 @@ After fulfilling the minimal requirements of this package and generating kallist
 This is done using the combineCounts function. There is only one argument for this function which is the path to the directory that contains the kallisto tsv outputs.
 
 
-``` r
+``` {r, }
 # combine all kallisto counts into a matrix called normCM
 combinedCM <- combineCounts("<path to the directory containing your kallisto outputs>")
 
@@ -110,7 +116,7 @@ The computed ratios will be transcript_id2 : transcript_id1.
 The fifth argument is metadata_group, which is the column in the metadata matrix, that you want to group your samples by.
 Lastly, the final argument is optional, which is the output_path. If you want to save the computed ratio data into a csv file, you can add a path to this argument. Note, to use our shiny app, this argument is required.
 
-``` r
+``` {r, }
 # calculate expression ratios for ENST00000316724.9 and ENST00000409400.1 without saving to a CSV.
 ratioDF <- calculateRatios(Normalized_CM, Experiment_info, "ENST00000316724.9", "ENST00000409400.1", "Biosample_summary")
 
@@ -128,7 +134,7 @@ The first argument is data, which takes the matrix you generated in step 2.
 The 2nd and 3rd arguments are x-label and y-label, which are the names you want your x-axis and y-axis to be. This is optional and will be blank if not set.
 The last argument is the title for your plot. This is also optional and will be NULL and blank if not set. 
 
-``` r
+``` {r, }
 # generate bar plot
 generateBarPlot(ratioDF, "Sample names", "Ratio", "Bar plot")
 
@@ -141,7 +147,7 @@ The 2nd and 3rd arguments are x-label and y-label, which are the names you want 
 The 4th argument is the title for your plot. This is also optional and will be NULL and blank if not set. 
 The last argument takes a list to specify the desired order for the boxes of your plot. This is optional, and will be ordered automatically if not set. If you want the boxes to be in a specific order, all group names must be included in the list.
 
-``` r
+``` {r, }
 # generate box plot without custom ordering
 generateBoxPlot(ratioDF, "Disease Type", "Ratio", "Box plot")
 
