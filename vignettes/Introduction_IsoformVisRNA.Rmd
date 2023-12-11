@@ -84,6 +84,11 @@ library(IsoformVisRNA)
 ?IsoformVisRNA::generateBoxPlot
 ``` 
 
+You can also generate plots using the Shiny app. To launch the shiny app:
+``` r
+library(IsoformVisRNA)
+IsoformVisRNA::runIsoformVisRNA()
+``` 
 ### Workflow
 In the following session, I will demonstate the use of **IsoformVisRNA** by to compare the two ENSEMBL transcript IDs, ENST00000316724.9 and ENST00000409400.1.
 

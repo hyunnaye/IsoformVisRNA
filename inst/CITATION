@@ -1,0 +1,12 @@
+citHeader("To cite IsoformVisRNA in publications use:")
+
+citEntry(entry = "Unpublished",
+  title        = "IsoformVisRNA: visualize differential expression of isoforms",
+  author       = "Nayeon Hyun",
+  note         = "Unpublished",
+  year         = "2023",
+
+  textVersion  =
+  paste("Hyun, N. (2023) IsoformVisRNA: visualize differential expression of isoforms.
+        Unpublished. URL https://github.com/hyunnaye/IsoformVisRNA.")
+)
