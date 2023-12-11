@@ -120,7 +120,6 @@ generateBarPlot <- function(data, x_label = NULL, y_label = NULL, title = NULL) 
 #' @export
 #' @import ggpubr
 #' @import stringr
-#'
 generateBoxPlot <- function(data, x_label = NULL, y_label = NULL, title = NULL, order = NULL) {
   boxPlot <- ggboxplot(data=data, x = colnames(data)[3], y = colnames(data)[2],
                        fill = colnames(data)[3], order = order)+

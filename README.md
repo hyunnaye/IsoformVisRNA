@@ -42,13 +42,11 @@ IsoformVisRNA::runIsoformVisRNA()
     data(package = "IsoformVisRNA") 
     browseVignettes("IsoformVisRNA")
 
-`IsoformVisRNA` contains 5 functions to analyze the alternative splicing
+`IsoformVisRNA` contains 4 functions to analyze the alternative splicing
 for the desired gene in samples. The *combineCM* function combines all
 kallisto count matrices to a single data frame. The *calculateRatios*
 function calculates the expression ratios for the two given transcript
-ids. Below is a flowchart demonstate the workflow of this package. The
-*runIsoformVisRNA* function can be used to launch the shiny app for this
-package.
+ids. Below is a flowchart demonstate the workflow of this package.
 
 ![](./inst/extdata/flowchart.png)
 
