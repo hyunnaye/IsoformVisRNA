@@ -114,6 +114,7 @@ The package tree structure is provided below.
     |- Experiment_info.rda
     |- Normalized_CM.rda
   |- inst
+    |- CITATION
     |- extdata
       |- barplot.png
       |- boxplot.png
