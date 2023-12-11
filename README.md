@@ -69,6 +69,9 @@ to multiple lines in order to avoid overflowing labels.
 ENCODE Project Consortium. *An integrated encyclopedia of DNA elements
 in the human genome*. Nature 2012 Sep 6;489(7414):57-74. PMID: 22955616
 
+Grolemund, G. (2015). *Learn Shiny - Video Tutorials*.
+<https://shiny.rstudio.com/tutorial/>
+
 H. Wickham. ggplot2: *Elegant Graphics for Data Analysis*.
 Springer-Verlag New York, 2016.
 
